@@ -49,7 +49,7 @@
         >
             <WelcomeBox
             title="Para generadoras"
-            subtitle="Compense su huella de carbono en tan solo unos clics"
+            subtitle="Compense la huella de carbono de sus clientes en tan solo unos clics"
             description='<p>
                 En Cero Trade,
                 <span class="font-bold">redima IRECs de manera transparente</span>

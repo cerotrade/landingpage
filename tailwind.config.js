@@ -4,6 +4,10 @@ export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        xs: { max: '639px' },
+        other: { min: '640px' },
+      },
       colors: {
         background: {
           black: '#181E23',

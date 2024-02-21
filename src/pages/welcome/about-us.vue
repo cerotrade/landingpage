@@ -1,11 +1,9 @@
 <template>
     <div>
-        <HomeNavbar></HomeNavbar>
-        <Introduction></Introduction>
         <div id="team-title" class="flex flex-column text-center gap-8 mt-8 font-inter">
             <h2 class="font-bold text-grays-1 text-2xl">Cero Team</h2>
             <div class="bg-grays-3">
-                <p class="text-grays-2 text-sm px-60 py-10">
+                <p class="text-grays-2 text-sm other:px-60 xs:px-4 py-10">
                   Nuestra misión es lograr la reducción y compensación
                   de las emisiones de carbono de las
                   empresas productoras y exportadoras de Chile y Latam, entregando un valor
@@ -13,7 +11,7 @@
                 </p>
             </div>
         </div>
-        <div class="flex flex-row justify-center flex-wrap p-8 gap-8 gap-x-2">
+        <div class="flex flex-row justify-center flex-wrap p-8 gap-8 gap-x-2 xs:gap-x-16">
              <div
               v-for="item in imagePaths"
               class="flex flex-column align-center w-1/3"
@@ -26,7 +24,7 @@
                   class="rounded-md"
                 >
                 <div
-                  class="bg-background-gray rounded-md gap-4 p-5 w-7/12"
+                  class="bg-background-gray rounded-md gap-4 p-5 other:w-7/12"
                   style="box-shadow: 0px 5.56px 11.13px 0px #ABBED166;"
                 >
                     <p class="text-greens-4 font-semibold mb-2 text-medium text-center">
@@ -39,12 +37,11 @@
           <div class="flex justify-center mb-10">
             <button
               @click="redirectToLink(formLink)"
-              class="bg-greens-1 w-32 text-xs py-2 px-2">
+              class="bg-greens-1 w-32 text-xs py-2 px-2 cursor-pointer">
               Únete al Cero Team
             </button>
           </div>
         <ContactUs></ContactUs>
-        <WelcomeFooter></WelcomeFooter>
     </div>
 </template>
 <script>
@@ -53,11 +50,7 @@ import {
   redirectToLink,
 } from '@/utils/functions';
 
-import HomeNavbar from '@/components/navigation/welcome-navbar.vue';
-
 // components
-import WelcomeFooter from '@/components/navigation/footer.vue';
-import Introduction from '@/components/boxes/introduction.vue';
 import ContactUs from '@/components/boxes/contact-us.vue';
 
 // images
@@ -87,7 +80,7 @@ export default {
     };
   },
   components: {
-    HomeNavbar, Introduction, WelcomeFooter, ContactUs,
+    ContactUs,
   },
   methods: {
     redirectToLink,

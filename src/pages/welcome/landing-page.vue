@@ -1,15 +1,15 @@
 <template>
     <div>
-        <HomeNavbar></HomeNavbar>
-        <Introduction></Introduction>
         <div id="introduction-image" class="absolute -mt-36 right-10">
             <img
                 :src="costumers"
                 alt="Welcome costumers"
                 id="welcome-costumers"
+                class="block xs:hidden"
             />
         </div>
-        <div id="bottom-box" class="bg-background-gray h-36 font-inter pl-56 pt-6 pr-96">
+        <div id="bottom-box" class="bg-background-gray h-36 font-inter other:pl-56 pt-6 other:pr-96
+        xs:px-3">
             <p class="font-base text-grays-2 text-center">
                 Tranza i-RECS
                 <span class="font-bold">
@@ -44,7 +44,7 @@
             </div>
         </div>
         <div
-            class="flex flex-row justify-center gap-8 mt-8 mb-8"
+            class="flex flex-row justify-center other:gap-8 mt-8 mb-8"
             id="how-it-works-box"
         >
             <WelcomeBox
@@ -65,9 +65,10 @@
                 :src="redeemIREC"
                 alt="For generators"
                 id="for-generators"
+                class="xs:w-1/2"
             />
         </div>
-        <div class="flex flex-row justify-center gap-8 mb-8">
+        <div class="flex flex-row justify-center other:gap-8 mb-8">
             <WelcomeBox
             subtitle="Maximice el retorno de su energía verde"
             description='<p>
@@ -84,13 +85,15 @@
                 :src="sellIREC"
                 alt="For generators"
                 id="for-generators"
+                class="xs:w-1/2"
             />
         </div>
-        <div class="flex flex-row justify-center gap-8">
+        <div class="flex flex-row justify-center other:gap-8">
             <img
                 :src="buyIREC"
                 alt="For generators"
                 id="for-generators"
+                class="xs:w-1/2"
             />
             <WelcomeBox
             title="Para empresas"
@@ -108,21 +111,22 @@
         <div class="font-inter">
             <div class="flex flex-column align-center mt-7">
                 <div class="achievements-image">
-                    <img class="relative -mb-2" :src="pc" alt="Welcome pc" id="welcome-pc">
+                    <img class="relative -mb-2 z-0" :src="pc" alt="Welcome pc" id="welcome-pc">
                 </div>
                 <div
-                    class="bg-grays-3 w-full flex flex-row py-8 pl-28 gap-8 pr-10
-                     place-items-center justify-center"
+                    class="bg-grays-3 w-full flex flex-row py-8 other:pl-28
+                    other:gap-8 other:pr-10 xs:gap-2 xs:p-4
+                    place-items-center justify-center"
                 >
-                    <div class="mr-2">
+                    <div class="other:mr-2">
                         <div id="ach-1" class="gap-5">
                             <h2
-                                class="font-semibold text-2xl"
+                                class="font-semibold other:text-2xl xs:text-xl"
                                 style="text-shadow: 0px 1px 2px #0000004D;"
                             >
                                 A partir de solo <span class="text-greens-3">USD$1</span>
                             </h2>
-                            <p class="text-xs">
+                            <p class="text-sm text-blacks-1 xs:text-xs">
                                 Podrás certificar tu consumo de energía como renovable
                             </p>
                         </div>
@@ -131,8 +135,9 @@
                         :src="achievementsRightArrow"
                         alt="Arrow right"
                         id="arrow-right"
+                        class="xs:size-1/12"
                     />
-                    <p class="text-sm px-20 text-wrap">
+                    <p class="text-grays-1 xs:text-xs other:text-sm other:px-20 text-wrap">
                         Y
                         <span class="text-greens-2 underline font-medium">
                             acceder a certificaciones
@@ -142,31 +147,38 @@
                 </div>
             </div>
             <div
-                class="flex flex-column text-center gap-8 mt-8"
+                class="flex flex-column text-center gap-8 mt-8 w-full"
                 id="achievements-box"
             >
-                <h2 class="font-bold text-grays-1 text-2xl">Reconocimientos de Cero Trade</h2>
-                <div class="flex flex-row justify-center space-x-8">
+                <h2 class="font-bold text-grays-1 other:text-2xl xs:text-xl">
+                    Reconocimientos de Cero Trade
+                </h2>
+                <div class="flex flex-row w-full justify-center space-x-8 align-center">
+                    <div
+                        class="flex flex-row flex-wrap justify-center other:space-x-8 align-center"
+                    >
                     <div
                         v-for="item in imagePaths"
-                        class="flex flex-column justify-center align-center"
                         :key="item.alt"
+                        class="flex flex-col justify-center items-center mb-8"
                     >
-                        <img :key="item.alt" :src="item.src" :alt="item.alt">
-                        <div
-                            class="bg-grays-3 p-4 text-sm w-56 relative -m-10 rounded-md"
-                            style="box-shadow: 0px 5.57px 11.137px 0px #ABBED166;"
-                        >
-                            <p class="font-semibold mb-3 text-grays-2">{{item.description}}</p>
-                            <p class="font-semibold text-greens-4">{{item.name}}</p>
-                        </div>
+                    <img :src="item.src" :alt="item.alt" class="mb-4">
+                    <div
+                        class="bg-grays-3 p-4 text-sm w-56 rounded-md shadow-md -mt-16 align-center"
+                    >
+                        <p class="font-semibold mb-2 text-grays-2">{{ item.description }}</p>
+                        <p class="font-semibold text-greens-4">{{ item.name }}</p>
+                    </div>
                     </div>
                 </div>
+                </div>
             </div>
-            <div class="font-inter flex flex-column text-center gap-8 mt-24">
-                <h2 class="font-bold text-grays-1 text-2xl">Preguntas Frecuentes</h2>
-                <div class="flex flex-row justify-center gap-8 mb-8">
-                    <img :src="wind" alt="Wind" id="wind">
+            <div class="font-inter flex flex-column text-center gap-8 other:mt-24">
+                <h2 class="font-bold text-grays-1 other:text-2xl xs:text-xl">
+                    Preguntas Frecuentes
+                </h2>
+                <div class="flex flex-row justify-center other:gap-8 mb-8">
+                    <img :src="wind" alt="Wind" id="wind" class="xs:w-1/2">
                     <WelcomeBox
                         subtitle="¿Qué son los i-REC?"
                         description='<p class="text-left">
@@ -175,7 +187,7 @@
                                     canjear certificados de energía renovable</span>.
                                     Son reconocidos internacionalmente, por lo que las empresas que
                                     deseen reducir su huella de carbono puede adquirirlos y entrar
-                                    en mercadosextranjeros sin inconvenientes.
+                                    en mercados extranjeros sin inconvenientes.
                                     Cada i-REC es un atributo que
                                     <span class="font-bold">
                                     representa 1 MWh de energía renovable</span>
@@ -189,7 +201,6 @@
             </div>
         </div>
         <ContactUs></ContactUs>
-        <WelcomeFooter></WelcomeFooter>
     </div>
 </template>
 
@@ -201,11 +212,8 @@ import {
 } from '@/utils/functions';
 
 // components
-import HomeNavbar from '@/components/navigation/welcome-navbar.vue';
 import ContactUs from '@/components/boxes/contact-us.vue';
-import Introduction from '@/components/boxes/introduction.vue';
 import WelcomeBox from '@/components/boxes/welcome-box.vue';
-import WelcomeFooter from '@/components/navigation/footer.vue';
 
 // images
 import startupChile from '@/assets/images/companies/startupChile.svg';
@@ -242,10 +250,7 @@ export default {
   },
   components: {
     ContactUs,
-    HomeNavbar,
-    WelcomeFooter,
     WelcomeBox,
-    Introduction,
   },
   methods: {
     redirectToFAQ,

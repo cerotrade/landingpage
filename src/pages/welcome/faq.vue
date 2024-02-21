@@ -1,7 +1,5 @@
 <template>
     <div>
-        <HomeNavbar></HomeNavbar>
-        <Introduction></Introduction>
         <div
           class="flex flex-column text-center gap-8 mt-8 font-inter"
           id="faqs-box"
@@ -14,27 +12,24 @@
           class="mt-4"
         >
             <div class="bg-background-gray p-4 align-center justify-center">
-                <h3 class="text-base text-grays-2 font-semibold pl-12">
+                <h3 class="text-base text-grays-2 font-semibold other:pl-12">
                   {{faq.id}}. {{faq.question}}
                 </h3>
             </div>
-            <div v-html="faq.answer" class="py-5 px-24 text-grays-2 text-sm leading-5"></div>
+            <div v-html="faq.answer"
+            class="py-5 other:px-24 xs:px-8 text-grays-2 text-sm leading-5"></div>
         </div>
         <ContactUs></ContactUs>
-        <WelcomeFooter></WelcomeFooter>
     </div>
 </template>
 <script>
 
 // components
 import ContactUs from '@/components/boxes/contact-us.vue';
-import WelcomeFooter from '@/components/navigation/footer.vue';
-import Introduction from '@/components/boxes/introduction.vue';
-import HomeNavbar from '@/components/navigation/welcome-navbar.vue';
 
 export default {
   components: {
-    HomeNavbar, Introduction, ContactUs, WelcomeFooter,
+    ContactUs,
   },
   data() {
     return {

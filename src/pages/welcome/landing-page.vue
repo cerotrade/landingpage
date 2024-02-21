@@ -101,7 +101,7 @@
             description='<p>
                 <span class="font-bold">Descubra y adquiera certificados</span>
                 de manera sencilla mediante Cero Trade, expandiendo su cartera y
-                llegando a un mayor número de clientes interesados en energías limpias
+                llegando a un mayor número de clientes interesados en energías limpias.
             </p>'
             buttonText="Compra i-RECS"
             @click="redirectToCompanies"

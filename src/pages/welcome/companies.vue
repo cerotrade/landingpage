@@ -7,8 +7,8 @@
             <img :src=complex alt="Complex" id="complex-images" class="xs:w-1/2"/>
             <p class="other:px-12 text-center text-grays-1">
                 El camino a ser una marca verde es un proceso
-                <span class="font-bold">extremadamente</span>
-                <span class="text-greens-2 underline font-bold"> complejo</span>,
+                <span class="font-bold">extremadamente </span>
+                <span class="text-greens-2 underline font-bold">complejo</span>,
                 <span class="text-greens-2 underline font-bold">caro</span>
                 <span class="font-bold"> y que puede tomar</span>
                 <span class="text-greens-2 underline font-bold"> meses</span>.
@@ -158,7 +158,9 @@
         <div class="flex flex-row justify-center py-8">
             <button
                 class="bg-greens-1 w-32 text-xs py-2 px-2 font-bold cursor-pointer"
-                id="start-btn">
+                id="start-btn"
+                @click="redirectToGenerators"
+            >
                 Compra i-RECS
             </button>
         </div>

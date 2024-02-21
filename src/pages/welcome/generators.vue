@@ -7,8 +7,8 @@
             <img :src=clients alt="Clients" id="clients-images" class="xs:w-1/2"/>
             <p class="other:px-12 text-center text-grays-1">
                 Gestionar energía sustentable en un proceso
-                <span class="font-bold">innecesariamente</span>
-                <span class="text-greens-2 underline font-bold"> complejo</span>
+                <span class="font-bold">innecesariamente </span>
+                <span class="text-greens-2 underline font-bold">complejo</span>
                 y
                 <span class="text-greens-2 underline font-bold">agotador</span>
             </p>
@@ -37,8 +37,7 @@
                 <h2 class="font-bold text-grays-1 text-2xl">Cómo funciona nuestro marketplace</h2>
                 <p class="text-grays-2 other:px-72 xs:px-4">
                     Nuestro servicio simplificado le permite
-                    <span class="font-bold">gestionar</span>
-                    ,
+                    <span class="font-bold">gestionar</span>,
                     <span class="font-bold">trazar</span>
                     y
                     <span class="font-bold">visibilizar</span>

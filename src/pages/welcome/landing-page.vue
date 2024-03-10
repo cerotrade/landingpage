@@ -130,25 +130,38 @@
                 <h2 class="font-bold text-grays-1 other:text-2xl xs:text-xl">
                     Reconocimientos de Cero Trade
                 </h2>
-                <div class="flex flex-row w-full justify-center space-x-8 align-center">
+                <div class="flex justify-center">
+                <img :src="arrowPrev" alt="Arrow prev"
+                class="w-10 cursor-pointer mr-4" @click="carouselPrev">
+                <div class="flex other:w-5/12 xs:w-7/12
+                space-x-8 align-center overflow-hidden">
                     <div
-                        class="flex flex-row flex-wrap justify-center other:space-x-8 align-center"
+                        ref="inner"
+                        class="flex flex-row space-x-8
+                        align-center transition duration-700"
+                        :style="innerStyles"
                     >
                     <div
+                        id="card"
                         v-for="item in imagePaths"
                         :key="item.alt"
-                        class="flex flex-col justify-center items-center mb-8"
+                        class="flex flex-col justify-center
+                        items-center mb-8"
                     >
-                    <img :src="item.src" :alt="item.alt" class="mb-4">
-                    <div
-                        class="bg-grays-3 p-4 text-sm w-56 rounded-md shadow-md -mt-16 align-center"
-                    >
-                        <p class="font-semibold mb-2 text-grays-2">{{ item.description }}</p>
-                        <p class="font-semibold text-greens-4">{{ item.name }}</p>
-                    </div>
+                        <img :src="item.src" :alt="item.alt" class="mb-4">
+                        <div
+                            class="bg-grays-3 p-4 text-sm w-56
+                            rounded-md shadow-md -mt-16 align-center"
+                        >
+                            <p class="font-semibold mb-2 text-grays-2">{{ item.description }}</p>
+                            <p class="font-semibold text-greens-4">{{ item.name }}</p>
+                        </div>
                     </div>
                 </div>
-                </div>
+            </div>
+            <img :src="arrowNext" alt="Arrow next"
+                class="w-10 cursor-pointer ml-2" @click="carouselNext">
+            </div>
             </div>
             <div class="font-inter flex flex-column text-center gap-8 other:mt-24">
                 <h2 class="font-bold text-grays-1 other:text-2xl xs:text-xl">
@@ -198,11 +211,15 @@ import WelcomeBox from '@/components/boxes/welcome-box.vue';
 // images
 import startupChile from '@/assets/images/companies/startupChile.svg';
 import DFinity from '@/assets/images/companies/DFinity.svg';
+import SUPExtention from '@/assets/images/companies/SUP-extention.svg';
+import AUNA from '@/assets/images/companies/AUNA.svg';
 import costumers from '@/assets/images/welcome/costumers.svg';
 import wind from '@/assets/images/welcome/wind.svg';
 import achievementsRightArrow from '@/assets/icons/welcome/achievements-right-arrow.svg';
 import PC from '@/assets/images/welcome/pc.svg';
 import arrowRight from '@/assets/icons/welcome/know-us-right-arrow.svg';
+import arrowPrev from '@/assets/icons/welcome/arrow-prev.svg';
+import arrowNext from '@/assets/icons/welcome/arrow-next.svg';
 import buyIREC from '@/assets/images/welcome/buy-iREC.svg';
 import redeemIREC from '@/assets/images/welcome/redeem-iREC.svg';
 import sellIREC from '@/assets/images/welcome/sell-iREC.svg';
@@ -217,6 +234,12 @@ export default {
         {
           src: DFinity, alt: 'DFinity', description: '“Receptor de la DFINITY developer grant”', name: 'DFINITY',
         },
+        {
+          src: SUPExtention, alt: 'SUPExtention', description: '“Ganadores extensión SUP”', name: 'Start-Up Chile',
+        },
+        {
+          src: AUNA, alt: 'AUNA', description: '“Tercer lugar torneo desarrollo de blockchain”', name: 'Open Challenge de AUNA',
+        },
       ],
       costumers,
       wind,
@@ -226,6 +249,11 @@ export default {
       buyIREC,
       redeemIREC,
       sellIREC,
+      arrowPrev,
+      arrowNext,
+      innerStyles: {},
+      step: '',
+      transitioning: false,
     };
   },
   components: {
@@ -237,6 +265,68 @@ export default {
     redirectToAboutUs,
     redirectToGenerators,
     redirectToCompanies,
+    setStep() {
+      const innerWidth = this.$refs.inner.scrollWidth + 30;
+      const totalCards = this.imagePaths.length;
+      this.step = `${innerWidth / totalCards}px`;
+    },
+    carouselNext() {
+      if (this.transitioning) return;
+
+      this.transitioning = true;
+
+      this.moveLeft();
+
+      this.afterTransition(() => {
+        const card = this.imagePaths.shift();
+        this.imagePaths.push(card);
+        this.resetTranslate();
+        this.transitioning = false;
+      });
+    },
+    carouselPrev() {
+      if (this.transitioning) return;
+
+      this.transitioning = true;
+
+      this.moveRight();
+
+      this.afterTransition(() => {
+        const card = this.imagePaths.pop();
+        this.imagePaths.unshift(card);
+        this.resetTranslate();
+        this.transitioning = false;
+      });
+    },
+    moveLeft() {
+      this.innerStyles = {
+        transform: `translateX(-${this.step})
+                    translateX(-${this.step})`,
+      };
+    },
+    moveRight() {
+      this.innerStyles = {
+        transform: `translateX(${this.step})
+                    translateX(-${this.step})`,
+      };
+    },
+    afterTransition(callback) {
+      const listener = () => {
+        callback();
+        this.$refs.inner.removeEventListener('transitionend', listener);
+      };
+      this.$refs.inner.addEventListener('transitionend', listener);
+    },
+    resetTranslate() {
+      this.innerStyles = {
+        transition: 'none',
+        transform: `translateX(-${this.step})`,
+      };
+    },
+  },
+  mounted() {
+    this.setStep();
+    this.resetTranslate();
   },
 };
 </script>

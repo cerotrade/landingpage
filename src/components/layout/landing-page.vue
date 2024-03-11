@@ -3,8 +3,8 @@
       <WelcomeNavbar v-if="!isMobile" />
       <Drawer v-else />
       <div v-if="showPopup"
-      class="absolute w-full flex justify-center mt-24 backdrop-blur-sm other:p-8 xs:p-4">
-            <WelcomePopUp :showPopup="showPopup" @close="showPopup = false"></WelcomePopUp>
+      class="absolute w-full flex justify-center backdrop-blur-[2px] align-start h-full z-40 pt-36">
+          <WelcomePopUp :showPopup="showPopup" @close="showPopup = false"></WelcomePopUp>
       </div>
       <Introduction></Introduction>
       <router-view></router-view>

@@ -29,9 +29,9 @@
           class="text-xs bg-greens-1 rounded-sm flex hover:brightness-95 px-4
           flex-row py-2.5 font-medium items-center gap-1.5 cursor-pointer"
           id="home-navbar-btn"
-          @click="redirectToLink(formLink)"
+          @click="redirectToMVPAlfa"
         >
-          Comencemos
+          Probar Alfa MVP
           <img :src="arrowRight" alt="arrow-right icon">
         </button>
       </div>
@@ -41,6 +41,7 @@
 <script>
 import {
   redirectToHowItWorks,
+  redirectToMVPAlfa,
   redirectToContactUs,
   redirectToHome,
   redirectToAboutUs,
@@ -65,6 +66,7 @@ export default {
   },
   methods: {
     redirectToHowItWorks,
+    redirectToMVPAlfa,
     redirectToContactUs,
     redirectToHome,
     redirectToAboutUs,
